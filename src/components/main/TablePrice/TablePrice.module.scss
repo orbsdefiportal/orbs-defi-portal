@@ -1,0 +1,24 @@
+.table {
+  &_wrapper {
+    width: 50%;
+    // max-width: 600px;
+    box-sizing: border-box;
+    text-align: left;
+    margin-left: 49px;
+    padding-top: 40px;
+  }
+
+  &_title {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &_title {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+  }
+}

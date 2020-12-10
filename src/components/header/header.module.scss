@@ -1,0 +1,26 @@
+.header {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 76px 77px 36px 65px;
+    align-items: center;
+  }
+
+  &_container {
+    display: flex;
+    align-items: center;
+  }
+
+  &_link {
+    text-decoration: none;
+    color: #fff;
+    padding-left: 24px;
+    font-size: 12px;
+    line-height: 1.17;
+
+    &:hover {
+      color: #6dbbcc;
+    }
+  }
+}

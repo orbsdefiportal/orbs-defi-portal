@@ -1,0 +1,35 @@
+.table {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #292929;
+    // width: 600px;
+    box-sizing: border-box;
+    // max-width: 600px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+  }
+  &_infoContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 142px;
+  }
+
+  &_info {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 8px 0;
+    min-width:100px;
+    text-align: right;
+  }
+  &_infoTrade {
+    text-align: left;
+  }
+
+  &_infoContainer {
+  }
+}

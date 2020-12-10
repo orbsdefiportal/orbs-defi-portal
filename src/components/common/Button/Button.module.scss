@@ -1,0 +1,14 @@
+.button {
+  &_basic {
+    margin: 0 16px 16px 17px;
+    padding: 9px 21px 9px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+  }
+}
