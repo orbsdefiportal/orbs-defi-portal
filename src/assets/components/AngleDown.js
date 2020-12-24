@@ -27,7 +27,7 @@ export default ({ name, isHover = null }) => {
             <g transform="translate(-571 -51) translate(24 24) translate(486 19)">
               <g>
                 <path
-                  // fill={isHover === name ? "#6dbbcc" : color}
+                 
                   stroke={isHover === name ? "#6dbbcc" : "#fff"}
                   strokeWidth="2"
                   d="M4.966 6.667L8.509 10 12.06 6.667"

@@ -1,0 +1,21 @@
+.custom_tooltip {
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  border-radius: 8px;
+  max-height: 4rem;
+  max-width: fit-content;
+  fill: "#fff";
+  padding: 0.7rem;
+
+  &__line {
+    white-space: nowrap;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+    margin: 0;
+  }
+}

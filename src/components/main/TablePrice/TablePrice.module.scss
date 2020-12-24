@@ -15,10 +15,17 @@
   }
 
   &_title {
+    display: block;
+    margin-bottom: 20px;
     font-family: Montserrat;
     font-size: 12px;
     font-weight: 500;
     color: #fff;
     text-transform: uppercase;
+  }
+
+  &_header {
+    color: #fff;
+    opacity: 0.5;
   }
 }

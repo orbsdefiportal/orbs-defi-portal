@@ -1,33 +1,36 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { Button } from "../Button";
-
+import OrbsContext from "../../../contex/orbsData/orbsContext";
 import classes from "./Switch.module.scss";
 
 export default () => {
-  const [isActive, setIsActive] = useState("Liquidity");
+  const orbsContext = useContext(OrbsContext);
+  const { switchPosition, setSwitch } = orbsContext;
+
   const setActiveButton = (name) => {
-    setIsActive(name);
+    setSwitch(name);
   };
+ 
   return (
     <div className={classes.switch_wrapper}>
       <Button
         className={`${classes.switch_button} ${
-          isActive === "Liquidity"
+          switchPosition === "Liquidity"
             ? `${classes.switch_button_active}`
             : `${classes.switch_button_basic}`
         }`}
-        // className={classes.switch_main}
+        
         title="Liquidity"
         onClick={() => setActiveButton("Liquidity")}
       />
       <Button
         className={`${classes.switch_button} ${classes.switch_button_second} ${
-          isActive === "Volume"
+          switchPosition === "Volume"
             ? `${classes.switch_button_active}`
             : `${classes.switch_button_basic}`
         }`}
-        // className={classes.switch_main + " " + classes.switch_main_active}
+        
         title="Volume"
         onClick={() => setActiveButton("Volume")}
       />

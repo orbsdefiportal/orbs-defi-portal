@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React, { useContext } from "react";
 
-import { list } from "../../../constants";
 import { ListItem } from "./ListItem";
-
+import OrbsContext from "../../../contex/orbsData/orbsContext";
 import classes from "./List.module.scss";
 
 const List = () => {
+  const orbsContext = useContext(OrbsContext);
+  const { list } = orbsContext;
   return (
     <div className={classes.list_wrapper}>
       {list.map(({ title, info }) => (

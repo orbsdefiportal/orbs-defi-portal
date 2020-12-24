@@ -1,20 +1,34 @@
 import "./App.css";
+import React, { useState } from "react";
 
 import Header from "./components/header/Header";
 import Main from "./components/main/Main";
 import { Subscribe } from "./components/Subscribe";
-import {Footer} from './components/footer'
+import { Footer } from "./components/footer";
 
-function App() {
+const App = () => {
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        overflow: `${isLoading === false ? "hidden" : "auto"}`,
+        maxHeight: `${isLoading === false ? "100vh" : "100%"}`,
+      }}
+    >
+      <div
+        className="lds-loader"
+        style={{ display: `${isLoading === false ? "flex" : "none"}` }}
+      >
+        <span className="loaderSpan">Loading data ...</span>
+      </div>
       <Header />
-      <Main />
+      <Main setIsLoading={setIsLoading} />
       <Subscribe />
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

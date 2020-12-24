@@ -9,7 +9,7 @@ import classes from "./Footer.module.scss";
 const Footer = () => {
   return (
     <div className={classes.footer_wrapper}>
-      {/* <div className={classes.footer_blockContainer}> */}
+      
       <article className={classes.footer_blockItem}>
         <h5>Not investment advice</h5>
         <p>
@@ -24,8 +24,9 @@ const Footer = () => {
         <h5>Orbs De-fi Platform</h5>
         <p>
           Orbs De-Fi Portal is a web application for interacting with{" "}
-          <a href="#">Orbs </a> on <a href="#">Uniswap, Balancer</a> with
-          cryptocurrency pricing data provided by <a href="#">Coingecko</a>
+          <a href="#">Orbs </a> on <a href="#">Uniswap</a>,{" "}
+          <a href="#">Balancer</a> with cryptocurrency pricing data provided by{" "}
+          <a href="#">Coingecko</a>
         </p>
       </article>
       {/* </div> */}

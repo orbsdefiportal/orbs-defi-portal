@@ -12,12 +12,12 @@ const FooterLinks = () => {
         <span className={classes.footerLinks_title}>Built by Paradigm </span>
         <div className={classes.footerLinks_credits}>
           <img src={github} />
-          <a href="#">paradigmfund.io</a>
+          <a href="https://paradigmfund.io/#0">paradigmfund.io</a>
         </div>
       </div>
       <div className={classes.footerLinks_socials}>
         <span className={classes.footerLinks_title}>Contact us </span>
-        <Socials data={footerSocials} isFooter={true}/>
+        <Socials data={footerSocials} isFooter={true} />
       </div>
     </div>
   );

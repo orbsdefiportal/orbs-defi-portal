@@ -5,7 +5,7 @@ import { headerSocials } from "../../../constants";
 
 export default ({ data, isFooter = false }) => {
   const [isHover, setIsHover] = useState(null);
-  
+
   return (
     <div
       className={classes.social_wrapper}
@@ -13,7 +13,7 @@ export default ({ data, isFooter = false }) => {
     >
       {data.map(({ name, Icon, link }) => (
         <a
-          href="#"
+          href={link}
           key={name}
           onMouseEnter={() => setIsHover(name)}
           onMouseLeave={() => setIsHover(null)}

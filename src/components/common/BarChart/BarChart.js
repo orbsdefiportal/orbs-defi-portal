@@ -1,84 +1,94 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
+  ResponsiveContainer,
+  Label,
 } from "recharts";
+import Loader from "../Loader/Loader";
+import OrbsContext from "../../../contex/orbsData/orbsContext";
+import { formatNumber } from "../../../utils";
+import classes from "./BarChart.module.scss";
 
 export default () => {
-  const data = [
-    {
-      name: "1:00",
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: "5:00",
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: "9:00",
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: "13:00",
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: "5:00",
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: "Page F",
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: "13:00",
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
-  return (
-    <BarChart
-      width={345}
-      height={150}
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5,
-      }}
-    >
-      {/* strokeDasharray="3 3" */}
-      <CartesianGrid
-        stroke="rgba(254, 255, 254, 0.2)"
-        strokeDasharray="3 3"
-        vertical={false}
-      />
-      <XAxis dataKey="name" tickMargin="12" axisLine={false} tickLine={false} />
-      {/* <YAxis /> */}
-      <Tooltip  cursor={{ fill: 'transparent' }} />
+  const orbsContext = useContext(OrbsContext);
+  const { chartData, switchPosition, isLoading } = orbsContext;
 
-      <Bar dataKey="pv" fill="rgba(109, 187, 204, 0.3)" barSize={14} />
-      {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
-    </BarChart>
+
+
+  const renderToolTip = (props) => {
+    const { payload } = props;
+    let info =
+      switchPosition === "Liquidity"
+        ? formatNumber(payload?.[0]?.payload?.liquidity)
+        : formatNumber(payload?.[0]?.payload?.volume);
+    return (
+      <div className={classes.custom_tooltip}>
+        <p className={classes.custom_tooltip__line}>
+          {`${payload?.[0]?.payload?.day ?? ""}  ${
+            payload?.[0]?.payload?.month ?? ""
+          } ${payload?.[0]?.payload?.year ?? ""}`}
+        </p>
+
+        <p
+          className={classes.custom_tooltip__line}
+        >{`${switchPosition}:  ${info}`}</p>
+      </div>
+    );
+  };
+
+
+
+  return (
+    <ResponsiveContainer width={"85%"} height={150}>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <BarChart
+          data={chartData}
+          margin={{
+            top: 5,
+            right: 35,
+            left: 0,
+            bottom: 10,
+          }}
+        >
+          <CartesianGrid
+            stroke="rgba(254, 255, 254, 0.2)"
+            strokeDasharray="3 3"
+            vertical={false}
+          />
+          <XAxis
+            dataKey="day"
+            tickMargin={12}
+            axisLine={false}
+            style={{ fontSize: "12px" }}
+            tickLine={false}
+          >
+            <Label
+              value={`${
+                chartData.length > 0 && chartData[chartData.length - 1].month
+              }`}
+              style={{ fill: "rgba(255, 255, 255, .5)", fontSize: "12px" }}
+              offset={5}
+              position="right"
+            />
+          </XAxis>
+          <Tooltip
+            content={renderToolTip}
+            cursor={{ fill: "rgba(255, 255, 255, 0.2)" }}
+          />
+
+          <Bar
+            dataKey={switchPosition === "Liquidity" ? "liquidity" : "volume"}
+            fill="rgba(109, 187, 204, 0.3)"
+            barSize={16}
+          />
+        </BarChart>
+      )}
+    </ResponsiveContainer>
   );
 };

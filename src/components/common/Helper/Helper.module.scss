@@ -1,0 +1,54 @@
+.helper {
+  &_wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    padding: 8px 0 8px 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: #1a1a1a;
+    background-image: url(../../../assets/icons/right_assets.svg),
+      url(../../../assets/icons/right_assets.svg);
+    background-position: 117% 50%, -47% 33%;
+    background-repeat: no-repeat;
+    // background-size: auto, 100%;
+  }
+
+  &_close {
+    cursor: pointer;
+  }
+
+  &_content {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 12px;
+
+    & > a {
+      text-decoration: none;
+      color: #6dbbcc;
+      padding-left: 8px;
+      line-height: 1.17;
+    }
+  }
+
+  &_rightContainer {
+    width: 20%;
+    height: 40px;
+    // background-image: url(../../../assets/icons/right_assets.svg);
+    // background-position: right;
+  }
+
+  &_leftContainer {
+    width: 22%;
+    padding-right: 24px;
+    text-align: right;
+    // display: flex;
+    // justify-content: flex-end;
+    // box-sizing: border-box;
+    // background-image: url(../../../assets/icons/right_assets.svg);
+    // background-position: 32%;
+  }
+}
