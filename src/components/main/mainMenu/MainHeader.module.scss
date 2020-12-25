@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: flex-end;
     font-family: Montserrat;
-    // max-width: 600px;
+    position: relative;
     width: 100%;
     box-sizing: border-box;
     padding-bottom: 15px;
@@ -59,6 +59,17 @@
     &:hover {
       background-color: rgba(234, 76, 126, 0.5);
       border: 1px solid #ea4c7e;
+    }
+  }
+}
+
+@media (max-width: 1210px) {
+  .mainHeader {
+    &_buttonContainer {
+      position: absolute;
+      flex-direction: column;
+      top: 3px;
+      right: 0;
     }
   }
 }

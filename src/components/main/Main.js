@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery, useSubscription } from "@apollo/react-hooks";
+import { ToastContainer, toast } from "react-toastify";
 
 import { Statistics } from "./Statistics";
 import { TablePrice } from "./TablePrice";
@@ -8,6 +9,8 @@ import OrbsContext from "../../contex/orbsData/orbsContext";
 import { traidingPair } from "../../constants";
 import { GET_UNISWAP_TOKEN_PRICE } from "../../contex/dataQuery";
 
+import "react-toastify/dist/ReactToastify.css";
+import "./MainStyles.css";
 import classes from "./Main.module.scss";
 
 const Main = ({ setIsLoading }) => {
@@ -21,8 +24,22 @@ const Main = ({ setIsLoading }) => {
     exchangeData,
     balancerPrice,
     chartData,
-    list,
+    isSuccess,
+    skipStatus,
   } = orbsContext;
+
+  const notify = () => {
+    toast("🦄 You've been subscribed successfully", {
+      autoClose: 5000,
+    });
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      notify();
+      skipStatus();
+    }
+  }, [isSuccess]);
 
   let isLoading =
     exchangeData.length === 9 && chartData.length > 0 && balancerPrice !== null;
@@ -63,6 +80,7 @@ const Main = ({ setIsLoading }) => {
 
   return (
     <main className={classes.main_root}>
+      <ToastContainer />
       <div className={classes.main_wrapper}>
         <Statistics loading={loading} />
         <TablePrice />

@@ -60,3 +60,13 @@
     color: #6dbbcc !important;
   }
 }
+
+@media (max-width: 1330px) {
+  .footer {
+    &_wrapper {
+      padding: 24px 25px 25px 25px;
+    }
+  }
+}
+
+

@@ -1,11 +1,9 @@
 .statistics {
   &_wrapper {
-    // max-width: 600px;
     width: 50%;
     padding-right: 50px;
     border-right: 1px solid #292929;
     padding-top: 40px;
-    // padding-bottom: 37px;
   }
 
   &_content {
@@ -17,5 +15,13 @@
   &_chart {
     width: 70%;
     height: 100px;
+  }
+}
+
+@media (max-width: 1330px) {
+  .statistics {
+    &_wrapper {
+      padding-right: 25px;
+    }
   }
 }

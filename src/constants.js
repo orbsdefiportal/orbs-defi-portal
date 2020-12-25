@@ -1,8 +1,3 @@
-// import icons from "./assets";
-import telegram from "./assets/icons/telegram.svg";
-import twitter from "./assets/icons/twitter.svg";
-import community from "./assets/icons/community.svg";
-import mail from "./assets/icons/mail.svg";
 import {
   GET_POOL_INFO_BALANCER,
   GET_POOL_INFO_UNISWAP,
@@ -110,7 +105,7 @@ export const traidingPair = [
     id: "0x795dfdfd413c4a9492cef5b58723f9fb3c8af624",
     query: GET_POOL_INFO_BALANCER,
     clientName: "balancer",
-  }, 
+  },
   {
     pair: "ETH/ORBS",
     id: "0xc98b3b8c7cc0d7d925d1a407347b845d9f001391",
@@ -125,7 +120,6 @@ export const traidingPair = [
 ];
 
 export const tradeId = { ETH: "ethereum", USDC: "usd-coin" };
-
 
 export const menuAddressLinks = [
   {

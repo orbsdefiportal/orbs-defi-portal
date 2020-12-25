@@ -6,6 +6,7 @@
   }
   &_wrapper {
     display: flex;
+    position: relative;
     width: 100%;
     box-sizing: border-box;
     padding-top: 16px;
@@ -25,6 +26,14 @@
     font-size: 12px;
   }
 
+  &_label {
+    position: absolute;
+    bottom: -24px;
+    color: #d92e58;
+    font-size: 12px;
+    font-family: Montserrat;
+  }
+
   &_input {
     padding: 16px 12px;
     border-radius: 2px;
@@ -32,6 +41,7 @@
     width: 250px;
     border: solid 1px rgba(109, 187, 204, 0.3);
     background-color: rgba(109, 187, 204, 0.1);
+    font-family: Montserrat;
     // outline: none;
     color: #fff !important;
 

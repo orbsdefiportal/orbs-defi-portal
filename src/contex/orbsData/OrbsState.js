@@ -8,18 +8,18 @@ import {
   SET_LOADING,
   SET_POOL_DATA,
   SET_ACTIVE_LINK_ID,
-  SET_DAILY_DATA,
   SET_LIST_DATA,
   SET_DATE_DIAPASON,
   SET_CHART_DATA,
   SET_SWITCH_POSITION,
   SET_VOLUME_TO_LIST,
   SET_EXCHANGE_DATA,
-
   SET_PRICE_DATA,
   SET_UNISWAP_PRICE,
   SET_BALANCER_PRICE,
- 
+  SET_IS_SUCCESS,
+  SET_IS_ERROR,
+  SKIP_STATUS,
 } from "../types";
 import {
   formatNumber,
@@ -34,11 +34,13 @@ import { traidingPair, tradeId } from "../../constants";
 const ORBSState = (props) => {
   const initialState = {
     isLoading: false,
+    isSuccess: false,
+    errorMessage: "",
+    isError: false,
     linkId: 0,
     poolData: {},
     balancerPrice: null,
     uniswapPrice: null,
-    dailyData: [],
     dateDiapason: {},
     chartData: [],
     switchPosition: "Liquidity",
@@ -57,29 +59,20 @@ const ORBSState = (props) => {
   const [state, dispatch] = useReducer(OrbsReducer, initialState);
 
   const setDataPool = async (data, activeLink, uniData) => {
- 
     let stateData =
       activeLink === 0 ? data.pools[0] : activeLink === 1 ? data : "";
-      dispatch({ type: SET_POOL_DATA, payload: stateData });
+    dispatch({ type: SET_POOL_DATA, payload: stateData });
 
     let chartData =
       activeLink === 0 ? data.swaps : activeLink === 1 ? data.pairDayDatas : "";
 
-   
     await setListData(stateData, activeLink);
     setChartData(chartData, activeLink);
     if (activeLink === 0) {
       dispatch({ type: SET_BALANCER_PRICE, payload: data.tokenPrice.price });
     }
 
-    
     dispatch({ type: SET_UNISWAP_PRICE, payload: uniData.pair.token0Price });
-
-  
-  };
-
-  const setDailyData = (payload) => {
-    dispatch({ type: SET_DAILY_DATA, payload });
   };
 
   const setSwitch = (payload) => {
@@ -106,27 +99,43 @@ const ORBSState = (props) => {
     });
   };
 
+  const skipStatus = () => {
+    dispatch({ type: SKIP_STATUS });
+  };
+
+  const subscribe = async (email) => {
+    const PROXY_URL = "https://cors-anywhere.herokuapp.com/";
+    const URL = "https://orbsdefi.substack.com/api/v1/free";
+    try {
+      const response = await axios.post(`${PROXY_URL}${URL}`, { email });
+      dispatch({ type: SET_IS_SUCCESS, payload: true });
+    } catch (err) {
+      dispatch({
+        type: SET_IS_ERROR,
+        payload: { status: true, msg: err.response.data.errors[0].msg },
+      });
+    }
+  };
+
   const setUniswapData = (data, stateData) => {
-   
     let obj = {
       pair: "ETH-ORBS",
       exchange: "UNISWAP",
       type: "DEX",
       price: (data * state.priceData.ETH).toFixed(4),
     };
-  
+
     return obj;
   };
 
   const setBalancerData = (data, stateData) => {
-  
     let obj = {
       pair: "ORBS-USDC",
       exchange: "BALANCER",
       type: "DEX",
       price: (data * state.priceData.USDC).toFixed(4),
     };
-   
+
     return obj;
   };
 
@@ -143,7 +152,6 @@ const ORBSState = (props) => {
       dispatch({ type: SET_VOLUME_TO_LIST, volume });
     }
     dispatch({ type: SET_CHART_DATA, payload: resultData });
-   
   };
 
   const setExchangeData = (
@@ -168,10 +176,9 @@ const ORBSState = (props) => {
       );
 
       dataPrice[key] = data[tradeId[key]].usd;
-   
+
       dispatch({ type: SET_PRICE_DATA, dataPrice });
     }
-   
   };
 
   const getCoingeckoData = async (exchangeData) => {
@@ -185,11 +192,9 @@ const ORBSState = (props) => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-           
           },
         }
       );
-      
 
       let resGecko = tickers.map((item) => {
         let obj = {
@@ -201,18 +206,16 @@ const ORBSState = (props) => {
         return obj;
       });
       resGecko = resGecko.splice(0, 7);
-    
 
       dispatch({ type: SET_EXCHANGE_DATA, payload: resGecko });
     }
   };
 
   const setListData = async (poolData, activeLink) => {
-    
     const { data } = await axios.get(
       `https://data-api.defipulse.com/api/v1/blocklytics/pools/v1/exchange/${traidingPair[activeLink].id}?api-key=c2178db5f9163feb9748a78856e322874aca293813e4855179e29309d94e`
     );
-    
+
     let volume = "",
       liquidity,
       roi = "",
@@ -275,6 +278,9 @@ const ORBSState = (props) => {
         isLoading: state.isLoading,
         linkId: state.linkId,
         list: state.list,
+        isSuccess: state.isSuccess,
+        isError: state.isError,
+        errorMessage: state.errorMessage,
         dateDiapason: state.dateDiapason,
         chartData: state.chartData,
         switchPosition: state.switchPosition,
@@ -285,11 +291,12 @@ const ORBSState = (props) => {
         setLinkId,
         setDataPool,
         setLoading,
-        setDailyData,
         setTime,
         setSwitch,
         getCoingeckoData,
         setExchangeData,
+        subscribe,
+        skipStatus,
       }}
     >
       {props.children}

@@ -26,3 +26,11 @@
     }
   }
 }
+
+@media (max-width: 1330px) {
+  .header {
+    &_wrapper {
+      padding: 76px 25px 36px 25px;
+    }
+  }
+}

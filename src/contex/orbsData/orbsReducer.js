@@ -2,33 +2,41 @@ import {
   SET_LOADING,
   SET_POOL_DATA,
   SET_ACTIVE_LINK_ID,
-  SET_DAILY_DATA,
   SET_LIST_DATA,
   SET_DATE_DIAPASON,
   SET_CHART_DATA,
   SET_SWITCH_POSITION,
   SET_VOLUME_TO_LIST,
   SET_EXCHANGE_DATA,
-  SET_UNISWAP_DATA,
-  SET_BALANCER_DATA,
   SET_PRICE_DATA,
   SET_UNISWAP_PRICE,
   SET_BALANCER_PRICE,
-  CLEAR_EXCHANGE_DATA,
+  SET_IS_SUCCESS,
+  SET_IS_ERROR,
+  SKIP_STATUS,
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
-    case SET_UNISWAP_DATA:
+    case SKIP_STATUS:
       return {
         ...state,
-        uniswapData: action.payload,
+        isSuccess: false,
+        isError: false,
+        errorMessage: "",
       };
 
-    case SET_BALANCER_DATA:
+    case SET_IS_SUCCESS:
       return {
         ...state,
-        balancerData: action.payload,
+        isSuccess: action.payload,
+      };
+
+    case SET_IS_ERROR:
+      return {
+        ...state,
+        isError: action.payload.status,
+        errorMessage: action.payload.msg,
       };
 
     case SET_BALANCER_PRICE:
@@ -95,12 +103,6 @@ export default (state, action) => {
       return {
         ...state,
         dateDiapason: action.payload,
-      };
-
-    case SET_DAILY_DATA:
-      return {
-        ...state,
-        dailyData: action.payload,
       };
 
     case SET_ACTIVE_LINK_ID:

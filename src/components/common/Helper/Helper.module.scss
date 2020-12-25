@@ -14,7 +14,7 @@
       url(../../../assets/icons/right_assets.svg);
     background-position: 117% 50%, -47% 33%;
     background-repeat: no-repeat;
-    // background-size: auto, 100%;
+    
   }
 
   &_close {
@@ -37,18 +37,21 @@
   &_rightContainer {
     width: 20%;
     height: 40px;
-    // background-image: url(../../../assets/icons/right_assets.svg);
-    // background-position: right;
+  
   }
 
   &_leftContainer {
     width: 22%;
     padding-right: 24px;
     text-align: right;
-    // display: flex;
-    // justify-content: flex-end;
-    // box-sizing: border-box;
-    // background-image: url(../../../assets/icons/right_assets.svg);
-    // background-position: 32%;
+   
+  }
+}
+
+@media (max-width: 1530px) {
+  .helper {
+    &_wrapper {
+      background-position: 117% 36%, -41% 66%;
+    }
   }
 }

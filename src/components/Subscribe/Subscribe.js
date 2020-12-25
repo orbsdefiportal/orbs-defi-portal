@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import bell from "../../assets/icons/bell.svg";
 import { FormContainer } from "./formContainer";
