@@ -124,7 +124,7 @@ export const tradeId = { ETH: "ethereum", USDC: "usd-coin" };
 export const menuAddressLinks = [
   {
     pair: "USDC/ORBS",
-    swap: `https://balancer.exchange/#/swap`,
+    swap: `https://balancer.exchange/#/swap/0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa`,
     liquidity: `https://pools.balancer.exchange/#/pool/0x795dfdfd413c4a9492cef5b58723f9fb3c8af624/`,
     linkliquidity: `https://orbsdefi.substack.com/p/how-to-add-liquidity-to-balancer`,
     swapName: `Link`,

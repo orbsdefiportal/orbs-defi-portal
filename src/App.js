@@ -9,6 +9,11 @@ import { Footer } from "./components/footer";
 const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
+  // position: absolute;
+  //   top: 50%;
+  //   left: 50%;
+  //   transform: translate(-50%, -50%);
+
   return (
     <div
       className="App"
