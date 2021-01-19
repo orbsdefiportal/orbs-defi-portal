@@ -250,7 +250,7 @@ const ORBSState = (props) => {
     let key = activeLink === 0 ? "second" : "first";
 
     const { data } = await axios.get(
-      `http://165.227.76.70:3000/api/blocklytics/Vyhzc3eU65qwI124Pkfd95b0msQ?key=${key}`
+      `http://165.227.76.70:8080/api/blocklytics/Vyhzc3eU65qwI124Pkfd95b0msQ?key=${key}`
     );
 
     const { data: coin } = await axios.get(
