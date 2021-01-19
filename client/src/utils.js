@@ -82,9 +82,8 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
 
   let resultArray = new Array(14).fill(0);
 
-  let count = 0;
+  let count = 1;
   let currentIndex = 0;
-  // console.log("data----", data);
   resultArray = resultArray.map((item, index) => {
     let date = moment().subtract(index, "day").toDate();
     let todayArr = getDateArray(Date.parse(date), true);
@@ -99,25 +98,15 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
 
     if (findIndex !== -1 && findVolumeIndex !== -1) {
       volume = totalSwapVolume - +resOb[findVolumeIndex].poolTotalSwapVolume;
-      // console.log("findIndex", findIndex);
-      // console.log("todayArr---------", todayArr);
       liquidity = +data[findIndex].poolLiquidity;
-      // console.log("liquidity--------", liquidity);
       currentIndex = findIndex;
       count++;
-      // console.log("count", count);
-      // console.log("currentIndex", currentIndex);
     } else {
       volume = 0;
-      // console.log(data.length);
       if (index === 0) {
         liquidity = +data[data.length - 1].poolLiquidity;
       } else {
-        // console.log("todayArr", todayArr);
-        // console.log("liquidity", liquidity);
-        // console.log("currentIndex + count", currentIndex - count);
-        liquidity = +data[currentIndex - count].poolLiquidity;
-        // liquidity = +data[currentIndex + count].poolLiquidity;
+        liquidity = +data[currentIndex - 1].poolLiquidity;
       }
     }
 
