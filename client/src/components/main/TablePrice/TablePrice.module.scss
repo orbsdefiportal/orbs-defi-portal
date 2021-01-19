@@ -1,0 +1,57 @@
+.table {
+  &_wrapper {
+    width: 50%;
+    box-sizing: border-box;
+    text-align: left;
+    margin-left: 49px;
+    padding-top: 40px;
+  }
+
+  &_title {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &_title {
+    display: block;
+    margin-bottom: 20px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  &_header {
+    color: #fff;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 1110px) {
+  .table {
+    &_wrapper {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 1330px) {
+  .table {
+    &_wrapper {
+      margin-left: 25px;
+    }
+  }
+}
+
+@media (max-width: 1085px) {
+  .table {
+    &_wrapper {
+      margin-left: 0;
+      width: 100%;
+      padding-top: 20px;
+      border-top: 1px solid #292929;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.table {
+  &_wrapper {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #292929;
+
+    box-sizing: border-box;
+
+    padding-bottom: 14px;
+    padding-top: 14px;
+  }
+  &_infoContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 142px;
+  }
+
+  &_info {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 6px 0 7px 0;
+    min-width: 100px;
+
+    &_price {
+      text-align: right;
+    }
+  }
+  &_infoTrade {
+    text-align: left;
+  }
+}
+
+@media (max-width: 500px) {
+  .table {
+    &_info {
+      min-width: 76px;
+    }
+  }
+}
+
+@media (max-width: 405px) {
+  .table {
+    &_infoContainer {
+      max-width: 122px;
+    }
+  }
+}

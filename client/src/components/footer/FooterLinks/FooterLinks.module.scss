@@ -1,0 +1,41 @@
+.footerLinks {
+  &_wrapper {
+    & > span {
+      color: #fff;
+    }
+  }
+
+  &_title {
+    font-family: Montserrat;
+    font-size: 12px;
+    line-height: 1.17;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  &_socials {
+    text-align: left;
+  }
+
+  &_credits {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding-bottom: 15px;
+    padding-top: 8px;
+
+    & > a {
+      color: #6dbbcc;
+      text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .footerLinks {
+    &_wrapper {
+      text-align: left;
+      
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.infoSection {
+  &_wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: #000;
+    padding-top: 65px;
+    padding-bottom: 73px;
+  }
+
+  &_container {
+    display: grid;
+    max-width: 1320px;
+    grid-template-columns: repeat(3, 1fr);
+
+    justify-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1154px) {
+  .infoSection {
+    &_container {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      gap: 20px;
+      max-width: 400px;
+    }
+  }
+}

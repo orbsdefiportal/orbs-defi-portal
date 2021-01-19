@@ -1,0 +1,85 @@
+.mainHeader {
+  &_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: Montserrat;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+  }
+
+  &_menu {
+    display: flex;
+    padding-left: 0px;
+    background-color: #000;
+    align-items: baseline;
+  }
+
+  &_item {
+    list-style-type: none;
+    margin-right: 24px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    cursor: pointer;
+
+    &_active {
+      color: #fff;
+      list-style-type: none;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #ea4c7e;
+      width: 100%;
+    }
+  }
+
+  &_buttonContainer {
+    display: flex;
+  }
+
+  &_basicButton {
+    background-color: #ea4c7e;
+    margin: 0 24px 16px 0px;
+    margin-right: 0px;
+
+    &:hover {
+      background-color: rgba(234, 76, 126, 0.8);
+    }
+  }
+
+  &_styledButton {
+    background-color: rgba(234, 76, 126, 0.3);
+    border: 1px solid rgba(234, 76, 126, 0.8);
+    color: rgba(234, 76, 126, 0.8);
+
+    &:hover {
+      background-color: rgba(234, 76, 126, 0.5);
+      border: 1px solid #ea4c7e;
+    }
+  }
+}
+
+@media (max-width: 1210px) {
+  .mainHeader {
+    &_buttonContainer {
+      position: absolute;
+      top: 3px;
+      right: 0;
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .mainHeader {
+    &_buttonContainer {
+      flex-direction: column;
+    }
+    &_basicButton {
+      padding: 9px 10px 9px 10px;
+    }
+    &_styledButton {
+      padding: 9px 10px 9px 10px;
+    }
+  }
+}
