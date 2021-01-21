@@ -9,7 +9,6 @@ import classes from "./Footer.module.scss";
 const Footer = () => {
   return (
     <div className={classes.footer_wrapper}>
-      
       <article className={classes.footer_blockItem}>
         <h5>Not investment advice</h5>
         <p>
@@ -23,13 +22,16 @@ const Footer = () => {
       <article className={classes.footer_blockItem}>
         <h5>Orbs De-fi Platform</h5>
         <p>
-          Orbs De-Fi Portal is a web application for interacting with{" "}
-          <a href="#">Orbs </a> on <a href="#">Uniswap</a>,{" "}
-          <a href="#">Balancer</a> with cryptocurrency pricing data provided by{" "}
-          <a href="#">Coingecko</a>
+          Orbs DeFi Portal is a web application for using ORBS token in DeFi
+          applications. The portal is integrated with{" "}
+          <a href="https://info.uniswap.org/home">Uniswap </a> through TheGraph
+          and <a href="https://pools.balancer.exchange/#/explore">Balancer</a>.{" "}
+          <a href="https://data.defipulse.com/"> DeFi Pulse</a> provides
+          analytical data. Cryptocurrency pricing data is provided by{" "}
+          <a href="https://www.coingecko.com/">Coingecko</a>.
         </p>
       </article>
-      {/* </div> */}
+      
       <div className={classes.footer_menuContainer}>
         <span>Menu</span>
         <Menu className={classes.footer_menu} isFooter={true} />

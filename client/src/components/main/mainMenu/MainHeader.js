@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { Button } from "../../common/Button";
 import classes from "./MainHeader.module.scss";
@@ -12,6 +12,19 @@ const MainHeader = () => {
   const setActiveLink = (id) => {
     setLinkId(id);
     setLoading();
+  };
+
+  const handleOnClick = (type) => {
+    let url =
+      type === "swap" && linkId === 0
+        ? "/balswapusdcorbs"
+        : type === "swap" && linkId === 1
+        ? "/uniswapethorbs"
+        : type === "liquidity" && linkId === 0
+        ? "/baladdusdcorbs"
+        : "/uniaddethorbs";
+
+    createIframe(linkId, type, url);
   };
 
   return (
@@ -36,15 +49,17 @@ const MainHeader = () => {
       </ul>
       <div className={classes.mainHeader_buttonContainer}>
         <a></a>
+
         <Button
           className={classes.mainHeader_styledButton}
-          title="SWAP"
-          onClick={() => createIframe(linkId, "swap")}
+          title="swap"
+          linkId={linkId}
+          onClick={() => handleOnClick("swap")}
         />
         <Button
           className={classes.mainHeader_basicButton}
           title="Add liquidity"
-          onClick={() => createIframe(linkId, "liquidity")}
+          onClick={() => handleOnClick("liquidity")}
         />
       </div>
     </div>

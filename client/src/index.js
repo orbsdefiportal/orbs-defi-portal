@@ -36,6 +36,7 @@ ReactDOM.render(
       </ORBSState>
     </React.StrictMode>
   </ApolloProvider>,
+
   document.getElementById("root")
 );
 

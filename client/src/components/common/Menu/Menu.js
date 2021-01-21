@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import classes from "./Menu.module.scss";
 
 import { useOutsideClick } from "../../common/UseOutsideClick/useOutsideClick";
@@ -20,6 +20,19 @@ const Menu = ({ className = "", isFooter = false }) => {
     setIsLiquidityMenu(null);
   });
 
+  const handleOnClick = (index, type) => {
+    let url =
+      type === "swap" && index === 0
+        ? "/balswapusdcorbs"
+        : type === "swap" && index === 1
+        ? "/uniswapethorbs"
+        : type === "liquidity" && index === 0
+        ? "/baladdusdcorbs"
+        : "/uniaddethorbs";
+
+    createIframe(index, type, url);
+  };
+
   return (
     <nav>
       <ul
@@ -30,7 +43,7 @@ const Menu = ({ className = "", isFooter = false }) => {
           ref={swap}
           className={classes.menu_item}
           onClick={() => setIsSwapMenu(!isSwapMenu)}
-          style={{ padding: `${isFooter ? "0 " : "9px 12px"}` }}
+          style={{ padding: `${isFooter ? "0 0 7px " : "9px 12px"}` }}
         >
           <span
             href="#"
@@ -45,7 +58,9 @@ const Menu = ({ className = "", isFooter = false }) => {
               className={classes.menu_angle}
               style={{
                 transform: `${isSwapMenu ? "rotate(180deg)" : "none"}`,
-                paddingTop: `${isSwapMenu && "4px"}`,
+                paddingTop: `${isSwapMenu ? "4px" : 0}`,
+                position: "absolute",
+                left: isFooter ? "35px" : "43px",
               }}
             >
               <AngleDown isHover={isHover} name="Swap" />
@@ -54,17 +69,18 @@ const Menu = ({ className = "", isFooter = false }) => {
           <div
             className={classes.menu_dropdown}
             style={{
-              opacity: `${isSwapMenu ? "1" : "0"}`,
-              bottom: `${isFooter ? "25px" : ""}`,
-              display: `${isSwapMenu ? "block" : "none"}`,
+              opacity: isSwapMenu ? "1" : "0",
+              bottom: isFooter ? "25px" : "",
+              display: isSwapMenu ? "block" : "none",
               textAlign: "center",
+              width: isFooter ? "100%" : "120%",
             }}
           >
             {menuAddressLinks.map((item, index) => {
               return (
                 <span
                   key={item.pair}
-                  onClick={() => createIframe(index, "swap")}
+                  onClick={() => handleOnClick(index, "swap")}
                 >
                   {item.pair}
                 </span>
@@ -75,7 +91,7 @@ const Menu = ({ className = "", isFooter = false }) => {
         <li
           ref={liquidity}
           className={classes.menu_item}
-          style={{ padding: `${isFooter ? "0 0 2px 0" : "9px 12px"}` }}
+          style={{ padding: `${isFooter ? "0 0 7px 0" : "9px 12px"}` }}
         >
           <span
             href="#"
@@ -90,7 +106,9 @@ const Menu = ({ className = "", isFooter = false }) => {
               className={classes.menu_angle}
               style={{
                 transform: `${isLiquidityMenu ? "rotate(180deg)" : "none"}`,
-                paddingTop: `${isLiquidityMenu && "4px"}`,
+                paddingTop: `${isLiquidityMenu ? "4px" : 0}`,
+                position: "absolute",
+                left: isFooter ? "90px" : "100px",
               }}
             >
               <AngleDown isHover={isHover} name="Add liquidity" />
@@ -108,7 +126,7 @@ const Menu = ({ className = "", isFooter = false }) => {
               return (
                 <span
                   key={item.pair}
-                  onClick={() => createIframe(index, "liquidity")}
+                  onClick={() => handleOnClick(index, "liquidity")}
                 >
                   {item.pair}
                 </span>
@@ -118,10 +136,10 @@ const Menu = ({ className = "", isFooter = false }) => {
         </li>
         <li
           className={classes.menu_item}
-          style={{ padding: `${isFooter ? "0 0 5px 0" : "9px 12px"}` }}
+          style={{ padding: `${isFooter ? "0 0 8px 0" : "9px 12px"}` }}
         >
           <a
-            href="https://orbsdefi.substack.com/p/how-to-add-liquidity-on-uniswap"
+            href="https://blog.orbsdefi.com"
             style={{
               color: `${isFooter && "#6dbbcc"}`,
               textTransform: `${isFooter && "none"}`,

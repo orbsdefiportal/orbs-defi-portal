@@ -1,6 +1,6 @@
 import React from "react";
 
-import bell from "../../assets/icons/bell.svg";
+import bell from "../../assets/icons/small_bell.svg";
 import { FormContainer } from "./formContainer";
 import classes from "./Subscribe.module.scss";
 

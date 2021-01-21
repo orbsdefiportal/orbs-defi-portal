@@ -14,10 +14,12 @@ import {
   SET_IS_SUCCESS,
   SET_IS_ERROR,
   SKIP_STATUS,
+ 
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
+    
     case SKIP_STATUS:
       return {
         ...state,

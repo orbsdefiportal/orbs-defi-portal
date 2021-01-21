@@ -17,3 +17,4 @@ export const SET_UNISWAP_PRICE = "SET_UNISWAP_PRICE";
 export const SET_IS_SUCCESS = "SET_IS_SUCCESS";
 export const SET_IS_ERROR = "SET_IS_ERROR";
 export const SKIP_STATUS = "SKIP_STATUS";
+

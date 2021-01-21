@@ -50,10 +50,16 @@
     font-size: 12px;
     color: #6dbbcc;
     text-decoration: none;
-   
+
     &:hover {
       color: #fff;
     }
+  }
+
+  &_link {
+    font-size: 12px;
+    color: #6dbbcc;
+    text-decoration: none;
   }
 
   &_articleName {

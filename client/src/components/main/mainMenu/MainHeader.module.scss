@@ -36,15 +36,19 @@
 
   &_buttonContainer {
     display: flex;
+    box-sizing: border-box;
   }
 
   &_basicButton {
     background-color: #ea4c7e;
-    margin: 0 24px 16px 0px;
+    border: 1px solid #ea4c7c;
+    margin: 0 23px 16px 0px;
     margin-right: 0px;
 
     &:hover {
-      background-color: rgba(234, 76, 126, 0.8);
+      // background-color: rgba(234, 76, 126, 0.8);
+      background-color: transparent;
+      color: #ea4c7c;
     }
   }
 

@@ -7,9 +7,15 @@
     margin: 0 25px 96px 25px;
     background-color: #1a1a1a;
     max-height: 199px;
+    ////
+    padding: 45px 0px;
 
     & > img {
-      padding-top: 22px;
+      // padding-top: 22px;
+      padding: 35px;
+      border: 1px solid #6dbbcc;
+      border-radius: 50%;
+      background-color: #000;
     }
   }
 }
@@ -39,9 +45,11 @@
       max-height: 100%;
       margin-bottom: 40px;
       border-radius: 4px;
+      padding-top: 30px;
 
       & > img {
-        padding-top: 0px;
+        margin-bottom: 15px;
+        // padding-top: 0px;
       }
     }
   }

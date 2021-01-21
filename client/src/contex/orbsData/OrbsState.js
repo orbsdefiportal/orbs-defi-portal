@@ -24,14 +24,12 @@ import {
 import {
   formatNumber,
   transformToMs,
-  getDateArray,
   formUniswapDailyData,
-  formBalancerDailyData,
   formBalancerChartData,
   getVolume,
 } from "../../utils";
 import classes from "../../components/main/List/ListItem/ListItem.module.scss";
-import { traidingPair, tradeId } from "../../constants";
+import { tradeId } from "../../constants";
 
 const ORBSState = (props) => {
   const tag = (
@@ -50,6 +48,7 @@ const ORBSState = (props) => {
     errorMessage: "",
     isError: false,
     linkId: 0,
+    type: "",
     poolData: {},
     balancerPrice: null,
     uniswapPrice: null,

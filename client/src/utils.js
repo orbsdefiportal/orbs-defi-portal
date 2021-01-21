@@ -32,36 +32,35 @@ export const getDateArray = (date, isTransform = false) => {
   return date.toString().split(" ");
 };
 
-export const createIframe = (linkId, type) => {
+export const createIframe = (linkId, type, url) => {
   let articleLink = menuAddressLinks[linkId][`link${type}`];
   let linkTo = menuAddressLinks[linkId][type];
   let articleName = menuAddressLinks[linkId][`${type}Name`];
   let windowTitle = type === "swap" ? "Swap" : "Add liquidity";
-  let win = window.open();
 
-  // text-decoration: none; font-family: Montserrat; font-size: 22px; color: #fff; padding: 10px; display: flex; justify-content: center; background-color: #525050"
-  win.document.write(
+  let win = window.open(
+    `${url}`,
     `
-    <html>
-    <head>
-    <title>${windowTitle}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    </head>
-    <body style="margin: 0;">
-    <a href=${articleLink} style="text-decoration: none; font-family: Montserrat; font-size: 22px; color: #fff; padding: 10px; display: flex; justify-content: center; background-color: #1a1a1a; background-image: url(/static/media/right_assets.5297a280.svg), url(/static/media/right_assets.5297a280.svg); background-repeat: no-repeat; background-position: 129% 50%, -40% 33%;">${articleName}</a>  
-    <iframe
-    src=${linkTo}
-    height="100%"
-    width="100%"
-    style="border: none"
-    title="New"
-    allow="fullScreen"
+  <html>
+  <head>
+  <title>${windowTitle}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  </head>
+  <body style="margin: 0;">
+  <a href=${articleLink} style="text-decoration: none; font-family: Montserrat; font-size: 12px; color: #6dbbcc; padding: 10px; display: flex; justify-content: center; text-transform: uppercase; background-color: #1a1a1a; background-image: url(/static/media/right_assets.5297a280.svg), url(/static/media/right_assets.5297a280.svg); background-repeat: no-repeat; background-position: 129% 50%, -40% 33%;">${articleName}</a>
+  <iframe
+  src=${linkTo}
+  height="100%"
+  width="100%"
+  style="border: none"
+  title="New"
+  id="theiframe"
+/>
 
-    
-    id="myId"
-  /></body>
-  </html>`
+</body>
+</html>`
   );
+  win.top.location.href = `${url}`;
 };
 
 export const formBalancerChartData = (data, totalSwapVolume) => {

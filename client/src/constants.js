@@ -33,7 +33,7 @@ export const footerSocials = [
   {
     name: "Mail",
     Icon: Mail,
-    link: "mailto:parters@paradigmfund.io",
+    link: "mailto:v@paradigmfund.io",
   },
 ];
 const tag = <div onMouseEnter={() => console.log(123)}>(i)</div>;
@@ -132,7 +132,8 @@ export const menuAddressLinks = [
     swap: `https://balancer.exchange/#/swap/0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa`,
     liquidity: `https://pools.balancer.exchange/#/pool/0x795dfdfd413c4a9492cef5b58723f9fb3c8af624/`,
     linkliquidity: `https://orbsdefi.substack.com/p/how-to-add-liquidity-to-balancer`,
-    swapName: `Link`,
+    linkswap: `https://blog.orbsdefi.com/p/how-to-swap-on-balancer`,
+    swapName: `How to swap on Balancer`,
     liquidityName: `How to add liquidity to Balancer?`,
     link:
       "https://pools.balancer.exchange/#/pool/0x795dfdfd413c4a9492cef5b58723f9fb3c8af624/",
@@ -143,8 +144,16 @@ export const menuAddressLinks = [
     liquidity: `https://app.uniswap.org/#/add/ETH/0xff56cc6b1e6ded347aa0b7676c85ab0b3d08b0fa`,
     linkliquidity: `https://orbsdefi.substack.com/p/how-to-add-liquidity-on-uniswap`,
     liquidityName: `How to add liquidity on Uniswap?`,
-    swapName: `Link`,
+    linkswap: `https://blog.orbsdefi.com/p/how-to-swap-on-uniswap`,
+    swapName: `How to swap on Uniswap`,
     link:
       "https://info.uniswap.org/pair/0xc98b3b8c7cc0d7d925d1a407347b845d9f001391",
   },
 ];
+
+export const routesLinks = {
+  balswapusdcorbs: { linkId: 0, type: "swap" },
+  uniswapethorbs: { linkId: 1, type: "swap" },
+  uniaddethorbs: { linkId: 1, type: "liquidity" },
+  baladdusdcorbs: { linkId: 0, type: "liquidity" },
+};

@@ -83,11 +83,18 @@
   }
 }
 
-
 @media (max-width: 1085px) {
   .menu {
     &_wrapper {
       display: none;
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .menu {
+    &_dropdown {
+      width: 50%;
     }
   }
 }

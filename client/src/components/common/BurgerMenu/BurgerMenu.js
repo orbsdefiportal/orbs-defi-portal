@@ -18,6 +18,19 @@ const BurgerMenu = ({ setIsOverflow }) => {
     setShowMenu(!showMenu);
   };
 
+  const handleOnClick = (index, type) => {
+    let url =
+      type === "swap" && index === 0
+        ? "/balswapusdcorbs"
+        : type === "swap" && index === 1
+        ? "/uniswapethorbs"
+        : type === "liquidity" && index === 0
+        ? "/baladdusdcorbs"
+        : "/uniaddethorbs";
+
+    createIframe(index, type, url);
+  };
+
   return (
     <>
       <div
@@ -65,7 +78,7 @@ const BurgerMenu = ({ setIsOverflow }) => {
                 return (
                   <span
                     key={item.pair}
-                    onClick={() => createIframe(index, "swap")}
+                    onClick={() => handleOnClick(index, "swap")}
                   >
                     {item.pair}
                   </span>
@@ -94,7 +107,7 @@ const BurgerMenu = ({ setIsOverflow }) => {
                 return (
                   <span
                     key={item.pair}
-                    onClick={() => createIframe(index, "swap")}
+                    onClick={() => handleOnClick(index, "swap")}
                   >
                     {item.pair}
                   </span>
