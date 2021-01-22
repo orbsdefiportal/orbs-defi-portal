@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import classes from "./Menu.module.scss";
 
 import { useOutsideClick } from "../../common/UseOutsideClick/useOutsideClick";

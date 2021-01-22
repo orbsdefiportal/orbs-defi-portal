@@ -1,15 +1,14 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 
 import { MainHeader } from "../mainMenu";
 import { Switch } from "../../common/Switch";
 import { BalanceInfo } from "../BalanceInfo";
 import { List } from "../List";
 import { BarChart } from "../../common/BarChart";
-import Loader from "../../common/Loader/Loader";
 
 import classes from "./Statistics.module.scss";
 
-const Statistics = (loading) => {
+const Statistics = () => {
   return (
     <div className={classes.statistics_wrapper}>
       <MainHeader />

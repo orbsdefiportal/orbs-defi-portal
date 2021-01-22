@@ -5,12 +5,11 @@ import { Dollar, Ball } from "../../../assets/components";
 import OrbsContext from "../../../contex/orbsData/orbsContext";
 import { traidingPair, menuAddressLinks } from "../../../constants";
 import eth from "../../../assets/icons/eth.png";
-import { formatNumber } from "../../../utils";
 
 import classes from "./BalanceInfo.module.scss";
 
 const BalanceInfo = () => {
-  let weight, swapFee, liquidity;
+  let weight;
   const orbsContext = useContext(OrbsContext);
   const { poolData, linkId } = orbsContext;
 
@@ -21,7 +20,7 @@ const BalanceInfo = () => {
       arr.push(+token.denormWeight * 2);
       return arr;
     }, []);
-    liquidity = formatNumber(poolData.liquidity);
+    // liquidity = formatNumber(poolData.liquidity);
   } else if (linkId === 1) {
     weight = [50, 50];
   }
@@ -31,7 +30,7 @@ const BalanceInfo = () => {
       <div className={classes.balancer_data}>
         {weight && `${weight[0]}% / ${weight[1]}%`}
         <a href={menuAddressLinks[linkId].link}>
-          <img src={link} style={{ margin: "8px 0 0 8px" }} />
+          <img src={link} style={{ margin: "8px 0 0 8px" }} alt="link" />
         </a>
       </div>
       <span className={classes.balancer_tab}>{traidingPair[linkId].pair}</span>
@@ -55,7 +54,11 @@ const BalanceInfo = () => {
         >
           {" "}
           {linkId === 1 ? (
-            <img src={eth} style={{ width: "57px", height: "57px" }} />
+            <img
+              src={eth}
+              style={{ width: "57px", height: "57px" }}
+              alt="pool"
+            />
           ) : (
             <div className={classes.balancer_imageSVG}>
               {" "}

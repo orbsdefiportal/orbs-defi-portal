@@ -11,7 +11,6 @@ const TablePrice = () => {
   const {
     exchangeData,
     priceData,
-    poolData,
     linkId,
     balancerPrice,
     uniswapPrice,

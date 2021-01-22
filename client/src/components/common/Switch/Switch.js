@@ -4,14 +4,14 @@ import { Button } from "../Button";
 import OrbsContext from "../../../contex/orbsData/orbsContext";
 import classes from "./Switch.module.scss";
 
-export default () => {
+const Switch = () => {
   const orbsContext = useContext(OrbsContext);
   const { switchPosition, setSwitch } = orbsContext;
 
   const setActiveButton = (name) => {
     setSwitch(name);
   };
- 
+
   return (
     <div className={classes.switch_wrapper}>
       <Button
@@ -20,7 +20,6 @@ export default () => {
             ? `${classes.switch_button_active}`
             : `${classes.switch_button_basic}`
         }`}
-        
         title="Liquidity"
         onClick={() => setActiveButton("Liquidity")}
       />
@@ -30,10 +29,11 @@ export default () => {
             ? `${classes.switch_button_active}`
             : `${classes.switch_button_basic}`
         }`}
-        
         title="Volume"
         onClick={() => setActiveButton("Volume")}
       />
     </div>
   );
 };
+
+export default Switch;

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 import github from "../../../assets/icons/github-.svg";
 import { footerSocials } from "../../../constants";
@@ -26,7 +26,7 @@ const FooterLinks = () => {
         >
           <a href="https://github.com/orbsdefiportal">
             {" "}
-            <img src={github} />
+            <img src={github} alt="github" />
           </a>
         </div>
       </div>

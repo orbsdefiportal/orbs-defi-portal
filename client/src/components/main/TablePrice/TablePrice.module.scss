@@ -55,3 +55,45 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .table {
+    &_header {
+      & > div {
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 387px) {
+  .table {
+    &_header {
+      & > div {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 376px) {
+  .table {
+    &_header {
+      & > div {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: 366px) {
+  .table {
+    &_header {
+      & > div {
+        margin-left: 0px;
+      }
+    }
+  }
+}

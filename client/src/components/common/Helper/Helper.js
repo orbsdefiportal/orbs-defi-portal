@@ -22,6 +22,7 @@ const Helper = () => {
           className={classes.helper_close}
           onClick={() => setIsClose(true)}
           src={close}
+          alt="close"
         />
       </div>
     </div>

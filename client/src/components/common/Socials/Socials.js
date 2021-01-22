@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import classes from "./Social.module.scss";
 
-import { headerSocials } from "../../../constants";
-
-export default ({ data, isFooter = false }) => {
+const Socials = ({ data, isFooter = false }) => {
   const [isHover, setIsHover] = useState(null);
 
   return (
@@ -24,3 +22,5 @@ export default ({ data, isFooter = false }) => {
     </div>
   );
 };
+
+export default Socials;

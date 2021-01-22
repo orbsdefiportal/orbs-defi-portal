@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ name, isHover = null }) => {
+const AngleDown = ({ name, isHover = null }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +27,9 @@ export default ({ name, isHover = null }) => {
             <g transform="translate(-571 -51) translate(24 24) translate(486 19)">
               <g>
                 <path
-                 stroke={isHover === name || isHover === true ? "#6dbbcc" : "#fff"}
-                 
+                  stroke={
+                    isHover === name || isHover === true ? "#6dbbcc" : "#fff"
+                  }
                   strokeWidth="2"
                   d="M4.966 6.667L8.509 10 12.06 6.667"
                   transform="translate(61.718 8)"
@@ -41,3 +42,5 @@ export default ({ name, isHover = null }) => {
     </svg>
   );
 };
+
+export default AngleDown;

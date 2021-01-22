@@ -1,7 +1,6 @@
 import React from "react";
 
-export default ({ color, isHover = null, name }) => {
- 
+const Telegram = ({ color, isHover = null, name }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,10 +19,7 @@ export default ({ color, isHover = null, name }) => {
       <g fill="#ada" fillRule="evenodd">
         <g>
           <g>
-            <g
-           
-              transform="translate(-1104 -43) translate(24 24) translate(1080 19)"
-            >
+            <g transform="translate(-1104 -43) translate(24 24) translate(1080 19)">
               <path
                 fill={isHover === name ? "#6dbbcc" : color}
                 fillRule="nonzero"
@@ -36,3 +32,5 @@ export default ({ color, isHover = null, name }) => {
     </svg>
   );
 };
+
+export default Telegram;

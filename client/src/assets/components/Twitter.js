@@ -1,6 +1,6 @@
 import React from "react";
 
-export default ({ color, isHover = null, name }) => {
+const Twitter = ({ color, isHover = null, name }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -35,3 +35,5 @@ export default ({ color, isHover = null, name }) => {
     </svg>
   );
 };
+
+export default Twitter;

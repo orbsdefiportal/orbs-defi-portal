@@ -81,7 +81,6 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
 
   let resultArray = new Array(14).fill(0);
 
-  let count = 1;
   let currentIndex = 0;
   resultArray = resultArray.map((item, index) => {
     let date = moment().subtract(index, "day").toDate();
@@ -99,7 +98,6 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
       volume = totalSwapVolume - +resOb[findVolumeIndex].poolTotalSwapVolume;
       liquidity = +data[findIndex].poolLiquidity;
       currentIndex = findIndex;
-      count++;
     } else {
       volume = 0;
       if (index === 0) {

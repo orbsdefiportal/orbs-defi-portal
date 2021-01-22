@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import { Button } from "../../common/Button";
 import classes from "./MainHeader.module.scss";

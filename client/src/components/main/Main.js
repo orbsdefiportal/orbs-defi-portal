@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useQuery, useSubscription } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import { ToastContainer, toast } from "react-toastify";
 
 import { Statistics } from "./Statistics";
@@ -56,11 +56,10 @@ const Main = ({ setIsLoading }) => {
 
   useEffect(() => {
     setTime();
-
     setSkip(false);
   }, []);
 
-  const { data = {}, loading, error } = useQuery(traidingPair[linkId].query, {
+  const { data = {}, loading } = useQuery(traidingPair[linkId].query, {
     variables: {
       id: traidingPair[linkId].id,
       timestamp_gt: dateDiapason.twoWeekAgo,

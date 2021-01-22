@@ -3,7 +3,7 @@ import {
   GET_POOL_INFO_UNISWAP,
 } from "./contex/dataQuery";
 
-import { Telegram, Twitter, Community, Mail } from "./assets/components";
+import { Telegram, Twitter, Mail } from "./assets/components";
 
 export const headerSocials = [
   {

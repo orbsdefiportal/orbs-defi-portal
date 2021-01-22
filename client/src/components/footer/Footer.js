@@ -1,6 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-import { Socials } from "../common/Socials";
 import { Menu } from "../common/Menu";
 import { FooterLinks } from "./FooterLinks";
 
@@ -31,7 +30,7 @@ const Footer = () => {
           <a href="https://www.coingecko.com/">Coingecko</a>.
         </p>
       </article>
-      
+
       <div className={classes.footer_menuContainer}>
         <span>Menu</span>
         <Menu className={classes.footer_menu} isFooter={true} />

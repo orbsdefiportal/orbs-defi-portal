@@ -12,7 +12,6 @@ const TableRow = ({
   url,
   isField = false,
 }) => {
-    
   return (
     <div className={classes.table_wrapper + " " + `${className}`}>
       <span
@@ -22,7 +21,7 @@ const TableRow = ({
         {trading}{" "}
         {isField && (
           <a href={url}>
-            <img src={link} />
+            <img src={link} alt="link" />
           </a>
         )}
       </span>

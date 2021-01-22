@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
-import { Menu } from "../Menu";
 import { Socials } from "../Socials";
 import { AngleDown } from "../../../assets/components";
 import { menuAddressLinks, headerSocials } from "../../../constants";
@@ -133,8 +132,6 @@ const BurgerMenu = ({ setIsOverflow }) => {
           <Socials data={headerSocials} />{" "}
         </ul>
       </nav>
-      {/* <Socials /> */}
-      {/*  */}
     </>
   );
 };

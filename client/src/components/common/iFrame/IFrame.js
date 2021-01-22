@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import { routesLinks, menuAddressLinks } from "../../../constants";
 
 const IFrame = () => {
-  let articleLink, linkTo, articleName, windowTitle, type, linkId;
+  let articleLink, linkTo, articleName, type, linkId;
   const history = useHistory();
 
   let url = history.location.pathname.substring(1);
@@ -12,12 +12,12 @@ const IFrame = () => {
       type = routesLinks[key].type;
       linkId = routesLinks[key].linkId;
     }
+    return key;
   });
 
   articleLink = menuAddressLinks[linkId][`link${type}`];
   linkTo = menuAddressLinks[linkId][type];
   articleName = menuAddressLinks[linkId][`${type}Name`];
-  windowTitle = type === "swap" ? "Swap" : "Add liquidity";
 
   return (
     <>
