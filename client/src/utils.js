@@ -103,7 +103,12 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
       if (index === 0) {
         liquidity = +data[data.length - 1].poolLiquidity;
       } else {
-        liquidity = +data[currentIndex - 1].poolLiquidity;
+        if (data && data[currentIndex - 1]) {
+          liquidity = +data[currentIndex - 1].poolLiquidity;
+        } else {
+          liquidity = 0;
+        }
+        // liquidity = +data[currentIndex - 1].poolLiquidity;
       }
     }
 

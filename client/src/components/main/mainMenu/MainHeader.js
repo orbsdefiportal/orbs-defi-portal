@@ -48,7 +48,7 @@ const MainHeader = () => {
         </li>
       </ul>
       <div className={classes.mainHeader_buttonContainer}>
-        <a></a>
+        {/* <a></a> */}
 
         <Button
           className={classes.mainHeader_styledButton}
