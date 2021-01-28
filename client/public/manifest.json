@@ -18,6 +18,7 @@
       "sizes": "512x512"
     }
   ],
+  "description": "Swap, add liquidity to ORBS and learn about Orbs DeFi ecosystem growth",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
