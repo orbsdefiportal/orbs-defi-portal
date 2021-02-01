@@ -15,7 +15,7 @@ const Footer = () => {
           financial advice, trading advice, or any other advice. Blocklytics
           will strive to ensure accuracy of information listed on this website
           although it will not hold any responsibility for any missing or wrong
-          information. Blocklytics provides all information as is.
+          information. Orbs DeFi Portal provides all information as is.
         </p>
       </article>
       <article className={classes.footer_blockItem}>

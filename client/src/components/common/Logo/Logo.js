@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./Logo.module.scss";
 
-import logo from "../../../assets/icons/logo.svg";
+// import logo from "../../../assets/icons/logo.svg";
+import logo from '../../../assets/icons/ORBS_Teal.png'
 
 const Logo = () => {
   return (
