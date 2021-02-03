@@ -12,10 +12,10 @@ const Footer = () => {
         <h5>Not investment advice</h5>
         <p>
           The content of this website does not constitute investment advice,
-          financial advice, trading advice, or any other advice. Blocklytics
-          will strive to ensure accuracy of information listed on this website
-          although it will not hold any responsibility for any missing or wrong
-          information. Orbs DeFi Portal provides all information as is.
+          financial advice, trading advice, or any other advice. Orbs DeFi
+          Portal will strive to ensure accuracy of information listed on this
+          website although it will not hold any responsibility for any missing
+          or wrong information. Orbs DeFi Portal provides all information as is.
         </p>
       </article>
       <article className={classes.footer_blockItem}>
