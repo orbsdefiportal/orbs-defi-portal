@@ -66,6 +66,7 @@ export const createIframe = (linkId, type, url) => {
 export const formBalancerChartData = (data, totalSwapVolume) => {
   let volume = "",
     liquidity;
+
   data.sort((a, b) => {
     return b.timestamp - a.timestamp;
   });
@@ -77,25 +78,68 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
     return item;
   });
 
-  const resOb = data.sort((a, b) => a.timestamp - b.timestamp);
+  const resOb = data.slice().sort((a, b) => b.timestamp - a.timestamp);
 
   let resultArray = new Array(14).fill(0);
 
   let currentIndex = 0;
+
   resultArray = resultArray.map((item, index) => {
     let date = moment().subtract(index, "day").toDate();
+    let prevDate = moment()
+      .subtract(index + 1, "day")
+      .toDate();
+
     let todayArr = getDateArray(Date.parse(date), true);
+    let yesterdayArr = getDateArray(Date.parse(prevDate), true);
+    let findPrevVolumeIndex = resOb.findIndex(
+      (item) => item.day === yesterdayArr[2] && item.month === yesterdayArr[1]
+    );
 
     let findIndex = data.findIndex(
       (item) => item.day === todayArr[2] && item.month === todayArr[1]
     );
 
+    let findIndex1 = data.filter(
+      (item) => item.day === todayArr[2] && item.month === todayArr[1]
+    );
+
+    const test = findIndex1.reduce((acc, cur) => {
+      return (acc += +cur.poolTotalSwapVolume);
+    }, 0);
+
     let findVolumeIndex = resOb.findIndex(
       (item) => item.day === todayArr[2] && item.month === todayArr[1]
     );
 
+    let flag = 0;
+    let counter = index;
+
+    while (flag === 0) {
+      let checkDate = moment()
+        .subtract(counter + 1, "day")
+        .toDate();
+      let checkDateTodayArr = getDateArray(Date.parse(checkDate), true);
+      const trigger = resOb.findIndex(
+        (item) =>
+          item.day === checkDateTodayArr[2] &&
+          item.month === checkDateTodayArr[1]
+      );
+      if (trigger !== -1) {
+        flag = trigger;
+      }
+      counter++;
+    }
     if (findIndex !== -1 && findVolumeIndex !== -1) {
-      volume = totalSwapVolume - +resOb[findVolumeIndex].poolTotalSwapVolume;
+      if (findPrevVolumeIndex !== -1) {
+        volume =
+          +resOb[findVolumeIndex].poolTotalSwapVolume -
+          +resOb[findPrevVolumeIndex].poolTotalSwapVolume;
+      } else {
+        volume =
+          +resOb[findVolumeIndex].poolTotalSwapVolume -
+          +resOb[flag].poolTotalSwapVolume;
+      }
       liquidity = +data[findIndex].poolLiquidity;
       currentIndex = findIndex;
     } else {
@@ -108,7 +152,7 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
         } else {
           liquidity = 0;
         }
-        // liquidity = +data[currentIndex - 1].poolLiquidity;
+      
       }
     }
 
