@@ -85,8 +85,10 @@ const ORBSState = (props) => {
         : "";
 
     let totalSwapVolume = activeLink === 0 ? data.pools[0].totalSwapVolume : "";
-
+console.log('data', data);
     await setListData(stateData, activeLink);
+    console.log('totalSwapVolume ---<>', totalSwapVolume);
+    console.log('chartData', chartData);
     setChartData(chartData, activeLink, totalSwapVolume);
     if (activeLink === 0) {
       dispatch({ type: SET_BALANCER_PRICE, payload: data.tokenPrice.price });
