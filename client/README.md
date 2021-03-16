@@ -1,6 +1,6 @@
 # ORBS DEFI PORTAL
 
-Orbs DeFi Portal is a web application for using ORBS token in DeFi applications. The portal is integrated with Uniswap through TheGraph and Balancer. DeFi Pulse provides analytical data. Cryptocurrency pricing data is provided by Coingecko.
+Orbs DeFi Portal is a web application for using ORBS token in DeFi applications. The portal is integrated with Uniswap and Balancer through TheGraph. DeFi Pulse provides analytical data. Cryptocurrency pricing data is provided by Coingecko.
 
 ## Getting Started
 
