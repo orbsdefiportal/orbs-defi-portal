@@ -182,9 +182,9 @@ const ORBSState = (props) => {
     if (state.linkId === 1) {
       resultData = formUniswapDailyData(data);
     } else {
-      resultData = formBalancerChartData(data, totalSwapVolume);
-      volume = getVolume(resultData);
-      volume = volume > 0 ? "$" + volume : "-";
+     resultData = formBalancerChartData(data, false);
+      volume = formatNumber(resultData[resultData.length - 1].volume);
+      //volume = volume > 0 ? "$" + volume : "-";
 
       dispatch({ type: SET_VOLUME_TO_LIST, volume });
     }
