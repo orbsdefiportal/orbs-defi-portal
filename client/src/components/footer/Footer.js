@@ -23,8 +23,8 @@ const Footer = () => {
         <p>
           Orbs DeFi Portal is a web application for using ORBS token in DeFi
           applications. The portal is integrated with{" "}
-          <a href="https://info.uniswap.org/home">Uniswap </a> through TheGraph
-          and <a href="https://pools.balancer.exchange/#/explore">Balancer</a>.{" "}
+          <a href="https://info.uniswap.org/home">Uniswap </a> and <a href="https://pools.balancer.exchange/#/explore">Balancer</a> through TheGraph
+          .{" "}
           <a href="https://data.defipulse.com/"> DeFi Pulse</a> provides
           analytical data. Cryptocurrency pricing data is provided by{" "}
           <a href="https://www.coingecko.com/">Coingecko</a>.
