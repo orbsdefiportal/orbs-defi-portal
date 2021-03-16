@@ -63,7 +63,7 @@ export const createIframe = (linkId, type, url) => {
   win.top.location.href = `${url}`;
 };
 
-export const formBalancerChartData = (data, totalSwapVolume) => {
+export const formBalancerChartData = (data, isList) => {
   let volume = "",
     liquidity;
 
@@ -167,7 +167,9 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
     return obj;
   });
 
-  return resultArray.reverse();
+  if (isList) {
+    return resultArray[0].volume;
+  } else return resultArray.reverse();
 };
 
 export const formUniswapDailyData = (data) => {
