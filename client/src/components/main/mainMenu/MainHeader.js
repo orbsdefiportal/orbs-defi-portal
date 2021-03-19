@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { Button } from "../../common/Button";
 import classes from "./MainHeader.module.scss";
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 import { createIframe } from "../../../utils";
 
 const MainHeader = () => {

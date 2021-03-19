@@ -5,9 +5,9 @@ import { ToastContainer, toast } from "react-toastify";
 import { Statistics } from "./Statistics";
 import { TablePrice } from "./TablePrice";
 import { InfoSection } from "./infoSection";
-import OrbsContext from "../../contex/orbsData/orbsContext";
+import OrbsContext from "../../context/orbsData/orbsContext";
 import { traidingPair } from "../../constants";
-import { GET_UNISWAP_TOKEN_PRICE } from "../../contex/dataQuery";
+import { GET_UNISWAP_TOKEN_PRICE } from "../../context/dataQuery";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./MainStyles.css";

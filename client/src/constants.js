@@ -1,7 +1,7 @@
 import {
   GET_POOL_INFO_BALANCER,
   GET_POOL_INFO_UNISWAP,
-} from "./contex/dataQuery";
+} from "./context/dataQuery";
 
 import { Telegram, Twitter, Mail } from "./assets/components";
 

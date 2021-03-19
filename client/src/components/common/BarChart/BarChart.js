@@ -9,7 +9,7 @@ import {
   Label,
 } from "recharts";
 import Loader from "../Loader/Loader";
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 import { formatNumber } from "../../../utils";
 import classes from "./BarChart.module.scss";
 

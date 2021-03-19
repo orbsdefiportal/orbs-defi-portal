@@ -16,8 +16,6 @@ export const formatNumber = (num) => {
   return num;
 };
 
-export const formListData = (list) => {};
-
 export const transformToMs = (date) => {
   date = date.toString().slice(0, -3);
   return parseInt(date);
@@ -63,7 +61,7 @@ export const createIframe = (linkId, type, url) => {
   win.top.location.href = `${url}`;
 };
 
-export const formBalancerChartData = (data, totalSwapVolume) => {
+export const formBalancerChartData = (data, isList) => {
   let volume = "",
     liquidity;
 
@@ -137,13 +135,12 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
         volume =
           +resOb[findVolumeIndex].poolTotalSwapVolume -
           +resOb[findPrevVolumeIndex].poolTotalSwapVolume;
+
       } else {
         volume =
           +resOb[findVolumeIndex].poolTotalSwapVolume -
           +resOb[flag].poolTotalSwapVolume;
       }
-
-      // volume = totalSwapVolume - +resOb[findVolumeIndex].poolTotalSwapVolume;
       liquidity = +data[findIndex].poolLiquidity;
       currentIndex = findIndex;
     } else {
@@ -156,7 +153,6 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
         } else {
           liquidity = 0;
         }
-        // liquidity = +data[currentIndex - 1].poolLiquidity;
       }
     }
 
@@ -170,8 +166,9 @@ export const formBalancerChartData = (data, totalSwapVolume) => {
 
     return obj;
   });
-
-  return resultArray.reverse();
+  if (isList) {
+    return resultArray[0].volume;
+  } else return resultArray.reverse();
 };
 
 export const formUniswapDailyData = (data) => {
@@ -193,6 +190,7 @@ export const formUniswapDailyData = (data) => {
     let findIndex = data.findIndex(
       (item) => item.day === todayArr[2] && item.month === todayArr[1]
     );
+
     if (findIndex !== -1) {
       volume = +data[findIndex].dailyVolumeUSD;
       liquidity = +data[findIndex].reserveUSD;

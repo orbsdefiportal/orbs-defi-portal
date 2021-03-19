@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import link from "../../../assets/icons/link.svg";
 import { Dollar, Ball } from "../../../assets/components";
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 import { traidingPair, menuAddressLinks } from "../../../constants";
 import eth from "../../../assets/icons/eth.png";
 

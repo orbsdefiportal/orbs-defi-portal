@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { Button } from "../../common/Button";
 import { formDescription } from "../../../constants";
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 
 import classes from "./FormContainer.module.scss";
 

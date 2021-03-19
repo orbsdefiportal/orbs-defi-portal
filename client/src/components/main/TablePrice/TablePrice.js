@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 import { tableHeader } from "../../../constants";
 import { TableRow } from "./TableRow";
 
@@ -42,6 +42,7 @@ const TablePrice = () => {
 
   const tableContant = exchangeData.map(
     ({ pair, exchange, type, price, url }) => {
+      
       let rand = Math.floor(Math.random() * 1000) + 1;
       return (
         <TableRow

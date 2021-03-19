@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { Button } from "../Button";
-import OrbsContext from "../../../contex/orbsData/orbsContext";
+import OrbsContext from "../../../context/orbsData/orbsContext";
 import classes from "./Switch.module.scss";
 
 const Switch = () => {

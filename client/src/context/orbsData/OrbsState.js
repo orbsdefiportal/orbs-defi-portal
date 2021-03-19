@@ -27,6 +27,7 @@ import {
   formUniswapDailyData,
   formBalancerChartData,
   getVolume,
+  numberWithCommas
 } from "../../utils";
 import classes from "../../components/main/List/ListItem/ListItem.module.scss";
 import { tradeId } from "../../constants";
@@ -79,16 +80,13 @@ const ORBSState = (props) => {
 
     let chartData =
       activeLink === 0
-        ? data.pools[0].swaps //data.swaps
+        ? data.pools[0].swaps
         : activeLink === 1
-        ? data.pairDayDatas
-        : "";
+          ? data.pairDayDatas
+          : "";
 
     let totalSwapVolume = activeLink === 0 ? data.pools[0].totalSwapVolume : "";
-console.log('data', data);
     await setListData(stateData, activeLink);
-    console.log('totalSwapVolume ---<>', totalSwapVolume);
-    console.log('chartData', chartData);
     setChartData(chartData, activeLink, totalSwapVolume);
     if (activeLink === 0) {
       dispatch({ type: SET_BALANCER_PRICE, payload: data.tokenPrice.price });
@@ -107,7 +105,6 @@ console.log('data', data);
 
   const setTime = () => {
     const tomorrow = moment().add(1, "day").toDate();
-    // const tomorrow = new Date(Date.now() + 1000 * 60 * 60 * 24);
     const twoWeekAgo = new Date(tomorrow - 12096e5);
     const twoMonthAgo = new Date(new Date().setDate(tomorrow.getDate() - 60));
 
@@ -184,10 +181,8 @@ console.log('data', data);
     if (state.linkId === 1) {
       resultData = formUniswapDailyData(data);
     } else {
-      resultData = formBalancerChartData(data, totalSwapVolume);
-      volume = getVolume(resultData);
-      volume = volume > 0 ? "$" + volume : "-";
-
+      resultData = formBalancerChartData(data, false);
+      volume = formatNumber(resultData[resultData.length - 1].volume);
       dispatch({ type: SET_VOLUME_TO_LIST, volume });
     }
     dispatch({ type: SET_CHART_DATA, payload: resultData });
@@ -201,7 +196,6 @@ console.log('data', data);
   ) => {
     const balancerObj = setBalancerData(balancerPrice, priceData);
     const uniswapObj = setUniswapData(uniswapPrice, priceData);
-
     exchangeData.unshift(balancerObj, uniswapObj);
 
     dispatch({ type: SET_EXCHANGE_DATA, payload: exchangeData });
@@ -213,7 +207,6 @@ console.log('data', data);
       const { data } = await axios.get(
         `https://api.coingecko.com/api/v3/simple/price?ids=${tradeId[key]}&vs_currencies=USD`
       );
-
       dataPrice[key] = data[tradeId[key]].usd;
 
       dispatch({ type: SET_PRICE_DATA, dataPrice });
@@ -230,7 +223,7 @@ console.log('data', data);
         "Content-Type": "application/json",
       },
     });
-
+    
     let resGecko = tickers.map((item) => {
       let obj = {
         pair: `${item.base}-${item.target}`,
@@ -241,10 +234,12 @@ console.log('data', data);
       };
       return obj;
     });
-    resGecko = resGecko.splice(0, 7);
-
+    
+    resGecko = resGecko
+      .slice()
+      .filter((elem) => elem.pair.length < 15)
+      .splice(0, 7);
     dispatch({ type: SET_EXCHANGE_DATA, payload: resGecko });
-    // }
   };
 
   const setListData = async (poolData, activeLink) => {
@@ -273,7 +268,7 @@ console.log('data', data);
       feeReturns = formatNumber(poolData.totalSwapVolume * poolData.swapFee);
     } else if (activeLink === 1) {
       swaps = poolData.swaps.length;
-      volume = poolData.pair.volumeUSD;
+      volume = formatNumber(poolData.pair.volumeUSD);
       feeReturns = +volume * 0.003;
       swapfee = "0.3%";
       liquidity =
@@ -297,17 +292,15 @@ console.log('data', data);
         case "Swaps":
           item.info = swaps;
           break;
-
         default:
           break;
       }
       if (index === state.list.length - 1) {
-        item.info = feeReturns;
+        item.info = isNaN(feeReturns) ? "-" : feeReturns;
       }
-
       return item;
-    });
 
+    });
     dispatch({ type: SET_LIST_DATA, payload: resList });
   };
 

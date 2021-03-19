@@ -8,7 +8,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 import reportWebVitals from "./reportWebVitals";
-import ORBSState from "./contex/orbsData/OrbsState";
+import ORBSState from "./context/orbsData/OrbsState";
 
 const cache = new InMemoryCache();
 const uniswap = new HttpLink({
