@@ -118,7 +118,6 @@ export const formBalancerChartData = (data, isList) => {
         .subtract(counter + 1, "day")
         .toDate();
       let checkDateTodayArr = getDateArray(Date.parse(checkDate), true);
-
       const trigger = resOb.findIndex(
         (item) =>
           item.day === checkDateTodayArr[2] &&
@@ -129,13 +128,11 @@ export const formBalancerChartData = (data, isList) => {
       }
       counter++;
     }
-
     if (findIndex !== -1 && findVolumeIndex !== -1) {
       if (findPrevVolumeIndex !== -1) {
         volume =
           +resOb[findVolumeIndex].poolTotalSwapVolume -
           +resOb[findPrevVolumeIndex].poolTotalSwapVolume;
-
       } else {
         volume =
           +resOb[findVolumeIndex].poolTotalSwapVolume -
@@ -153,6 +150,7 @@ export const formBalancerChartData = (data, isList) => {
         } else {
           liquidity = 0;
         }
+      
       }
     }
 
