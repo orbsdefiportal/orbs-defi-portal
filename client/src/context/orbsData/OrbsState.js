@@ -268,7 +268,9 @@ const ORBSState = (props) => {
       feeReturns = formatNumber(poolData.totalSwapVolume * poolData.swapFee);
     } else if (activeLink === 1) {
       swaps = poolData.swaps.length;
-      volume = formatNumber(poolData.pair.volumeUSD);
+     volume = formatNumber(
+        poolData.pairDayDatas[poolData.pairDayDatas.length - 1].dailyVolumeUSD
+      );
       feeReturns = +volume * 0.003;
       swapfee = "0.3%";
       liquidity =
